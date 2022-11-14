@@ -1,8 +1,4 @@
-export type TDeed = {
-  id: string;
-  name: string;
-  weight: number;
-};
+import { TDeed } from './features/deed-list/types';
 
 export const mockData: TDeed[] = [
   {

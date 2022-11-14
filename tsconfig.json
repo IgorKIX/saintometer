@@ -18,7 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      // TODO: Fix - link to similar problem (https://github.com/facebook/create-react-app/issues/12766)
+//      "@features/*": ["src/features/*"],
+    }
   },
   "include": [
     "src"

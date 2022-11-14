@@ -1,9 +1,9 @@
-import { CssBaseline, Container } from '@mui/material';
+import { CssBaseline, Container, Box } from '@mui/material';
 import React from 'react';
 
 import './App.css';
 import { BottomToolbar } from './components/bottom-toolbar/';
-import DeedList from './pages/deed-list';
+import IntentionsList from './pages/intentions-list';
 
 function App() {
   return (
@@ -12,8 +12,12 @@ function App() {
       <Container
         sx={{ height: '100vh', display: 'grid', gridTemplateRows: '1fr 56px' }}
       >
-        <DeedList />
-        <BottomToolbar />
+        <Box sx={{ gridRow: '1 / 2' }}>
+          <IntentionsList />
+        </Box>
+        <Box sx={{ gridRow: '2 / 3' }}>
+          <BottomToolbar />
+        </Box>
       </Container>
     </>
   );

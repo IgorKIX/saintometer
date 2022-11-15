@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 import { mockData } from '../data';
@@ -39,7 +40,9 @@ function IntentionsList() {
   return (
     <>
       <IntentionsToolbarComponent onClick={handleClickOpenDialog} />
-      <IntentionsListComponent intentionsList={intentionsList} />
+      <Container>
+        <IntentionsListComponent intentionsList={intentionsList} />
+      </Container>
       <IntentionsDialogComponent
         addIntention={addIntention}
         isDialogOpen={isDialogOpen}

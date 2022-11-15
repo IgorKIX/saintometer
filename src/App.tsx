@@ -9,16 +9,8 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Container
-        sx={{ height: '100vh', display: 'grid', gridTemplateRows: '1fr 56px' }}
-      >
-        <Box sx={{ gridRow: '1 / 2' }}>
-          <IntentionsList />
-        </Box>
-        <Box sx={{ gridRow: '2 / 3' }}>
-          <BottomToolbar />
-        </Box>
-      </Container>
+      <IntentionsList />
+      <BottomToolbar />
     </>
   );
 }

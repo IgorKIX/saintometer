@@ -1,5 +1,5 @@
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
-import { AppBar, Grid, Toolbar } from '@mui/material';
+import { AppBar, Grid, Slide, Toolbar, useScrollTrigger } from '@mui/material';
 import React from 'react';
 
 interface Props {
@@ -7,21 +7,25 @@ interface Props {
 }
 
 function IntentionsToolbarComponent({ onClick }: Props) {
+  const trigger = useScrollTrigger();
+
   return (
     <>
-      <AppBar color="inherit">
-        <Toolbar>
-          <Grid container justifyContent="end" spacing={2}>
-            <Grid item>
-              <AddCircleOutlineSharpIcon
-                onClick={onClick}
-                fontSize="large"
-                aria-label="Add"
-              />
+      <Slide appear={false} in={!trigger}>
+        <AppBar color="inherit">
+          <Toolbar>
+            <Grid container justifyContent="end" spacing={2}>
+              <Grid item>
+                <AddCircleOutlineSharpIcon
+                  onClick={onClick}
+                  fontSize="large"
+                  aria-label="Add"
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      </Slide>
       <Toolbar />
     </>
   );

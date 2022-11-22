@@ -1,4 +1,10 @@
-import { Grid, List, ListItem, ListItemText } from '@mui/material';
+import {
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from '@mui/material';
 import React from 'react';
 
 import { IIntention } from '../types';
@@ -13,7 +19,9 @@ function IntentionsListComponent({ intentionsList }: Props) {
       <List>
         {intentionsList.map(({ id, name }) => (
           <ListItem key={id}>
-            <ListItemText primary={name} />
+            <ListItemButton href={`intention/${id}`}>
+              <ListItemText primary={name} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>

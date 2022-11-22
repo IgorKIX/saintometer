@@ -19,7 +19,7 @@ type Props = {
   addIntention: (formVal: IIntentionFormInputs) => void;
 };
 
-function IntentionsDialogComponent({
+function IntentionsListDialogComponent({
   addIntention,
   isDialogOpen,
   handleCloseDialog,
@@ -82,4 +82,4 @@ function IntentionsDialogComponent({
   );
 }
 
-export default IntentionsDialogComponent;
+export default IntentionsListDialogComponent;

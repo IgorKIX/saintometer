@@ -1,9 +1,9 @@
-import IntentionsDialogComponent from './intentions-dialog/intentions-dialog.component';
-import IntentionsToolbarComponent from './intentions-toolbar/intentions-toolbar.component';
+import IntentionsListDialogComponent from './intentions-list-dialog/intentions-list-dialog.component';
+import IntentionsListToolbarComponent from './intentions-list-toolbar/intentions-list-toolbar.component';
 import IntentionsListComponent from './intnentions-list/intentions-list.component';
 
 export {
-  IntentionsDialogComponent,
-  IntentionsToolbarComponent,
+  IntentionsListDialogComponent,
+  IntentionsListToolbarComponent,
   IntentionsListComponent,
 };

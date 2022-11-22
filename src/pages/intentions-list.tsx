@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 import { mockData } from '../data';
 import {
-  IntentionsToolbarComponent,
+  IntentionsListToolbarComponent,
   IntentionsListComponent,
-  IntentionsDialogComponent,
+  IntentionsListDialogComponent,
 } from '../features/intentions-list';
 import {
   IIntention,
@@ -39,11 +39,11 @@ function IntentionsList() {
 
   return (
     <>
-      <IntentionsToolbarComponent onClick={handleClickOpenDialog} />
+      <IntentionsListToolbarComponent />
       <Container>
         <IntentionsListComponent intentionsList={intentionsList} />
       </Container>
-      <IntentionsDialogComponent
+      <IntentionsListDialogComponent
         addIntention={addIntention}
         isDialogOpen={isDialogOpen}
         handleCloseDialog={handleCloseDialog}

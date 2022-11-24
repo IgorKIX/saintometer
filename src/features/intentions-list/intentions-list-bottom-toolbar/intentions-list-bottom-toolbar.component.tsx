@@ -21,7 +21,13 @@ const StyledFab = styled(Fab)({
   margin: '0 auto',
 });
 
-function BottomToolbarComponent() {
+type Props = {
+  handleClickOpenDialog: () => void;
+};
+
+function IntentionsListBottomToolbarComponent({
+  handleClickOpenDialog,
+}: Props) {
   const trigger = useScrollTrigger();
   return (
     <Slide appear={false} direction="up" in={!trigger}>
@@ -31,7 +37,7 @@ function BottomToolbarComponent() {
             <MenuIcon />
           </IconButton>
           <StyledFab color="secondary" aria-label="add">
-            <AddIcon />
+            <AddIcon onClick={handleClickOpenDialog} />
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
         </Toolbar>
@@ -40,4 +46,4 @@ function BottomToolbarComponent() {
   );
 }
 
-export default BottomToolbarComponent;
+export default IntentionsListBottomToolbarComponent;

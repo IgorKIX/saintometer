@@ -4,6 +4,6 @@ type Props = {
   intentionId: string | undefined;
 };
 
-export default function IntentionComponent({ intentionId }: Props) {
+export default function IntentionEventsListComponent({ intentionId }: Props) {
   return <div>Intention {intentionId}</div>;
 }

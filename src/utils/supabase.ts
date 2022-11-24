@@ -1,0 +1,11 @@
+import { createClient } from '@supabase/supabase-js';
+
+import { Database } from './database.types';
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
+const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
+
+// TODO: Get the types from backend
+const supabase = createClient<Database>(supabaseUrl, supabaseKey);
+
+export default supabase;

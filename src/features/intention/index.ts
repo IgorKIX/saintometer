@@ -1,3 +1,3 @@
-import IntentionComponent from './intention/intention.component';
+import IntentionEventsListComponent from './intention-events-list/intention-events-list.component';
 
-export { IntentionComponent };
+export { IntentionEventsListComponent };

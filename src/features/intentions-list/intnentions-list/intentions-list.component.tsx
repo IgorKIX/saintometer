@@ -7,20 +7,20 @@ import {
 } from '@mui/material';
 import React from 'react';
 
-import { IIntention } from '../types';
+import useGetIntentions from '../hooks/useGetIntentions';
 
-type Props = {
-  intentionsList: IIntention[];
-};
-
-function IntentionsListComponent({ intentionsList }: Props) {
+function IntentionsListComponent() {
+  const { data, isSuccess } = useGetIntentions();
+  if (!isSuccess) {
+    return <div>un success</div>;
+  }
   return (
     <Grid container direction="column" spacing={2}>
       <List>
-        {intentionsList.map(({ id, name }) => (
+        {data.map(({ id, name, description }) => (
           <ListItem key={id}>
             <ListItemButton href={`intention/${id}`}>
-              <ListItemText primary={name} />
+              <ListItemText primary={name} secondary={description} />
             </ListItemButton>
           </ListItem>
         ))}

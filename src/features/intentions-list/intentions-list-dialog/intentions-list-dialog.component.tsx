@@ -11,16 +11,15 @@ import {
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import useAddIntention from '../hooks/useAddIntention';
 import { IIntentionFormInputs } from '../types';
 
 type Props = {
   isDialogOpen: boolean;
   handleCloseDialog: () => void;
-  addIntention: (formVal: IIntentionFormInputs) => void;
 };
 
 function IntentionsListDialogComponent({
-  addIntention,
   isDialogOpen,
   handleCloseDialog,
 }: Props) {
@@ -32,11 +31,13 @@ function IntentionsListDialogComponent({
   } = useForm<IIntentionFormInputs>({
     defaultValues: {
       name: '',
+      description: '',
     },
   });
+  const { mutate } = useAddIntention();
 
   const formSubmitHandler = (formVal: IIntentionFormInputs) => {
-    addIntention(formVal);
+    mutate(formVal);
     handleCloseDialog();
     reset();
   };
@@ -65,6 +66,21 @@ function IntentionsListDialogComponent({
                     size="small"
                     error={!!errors.name}
                     helperText={errors.name ? errors.name?.message : ''}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={9}>
+              <Controller
+                name="description"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Description"
+                    size="small"
+                    error={!!errors.description}
+                    helperText={errors.description ? errors.name?.message : ''}
                   />
                 )}
               />

@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { IntentionEventsListComponent } from '../features/intention';
+import {
+  IntentionDataComponent,
+  IntentionHeaderComponent,
+} from '../features/intention';
+import useGetEvents from '../features/intention/hooks/useGetEvents';
+import useGetIntention from '../features/intention/hooks/useGetIntention';
+import { IIntention } from '../features/intentions-list/types';
 
 export default function Intention() {
-  const { intentionId } = useParams();
+  const { intentionId = '' } = useParams();
+  const { data: intentionData, isSuccess: isSuccessIntention } =
+    useGetIntention(intentionId);
+  const { data: eventList, isSuccess: isSuccessEventList } =
+    useGetEvents(intentionId);
+  const [intention, setIntention] = useState({} as IIntention);
 
-  return <IntentionEventsListComponent intentionId={intentionId} />;
+  useEffect(() => {
+    if (intentionData) {
+      setIntention(intentionData[0]);
+    }
+  }, [intentionData]);
+
+  if (isSuccessIntention && isSuccessEventList && intention) {
+    return (
+      <>
+        <IntentionHeaderComponent name={intention.name} />
+        <IntentionDataComponent
+          intentionId={intention.id}
+          events={eventList}
+          score={intention.score}
+        />
+      </>
+    );
+  }
+  return <div>unSuccess</div>;
 }

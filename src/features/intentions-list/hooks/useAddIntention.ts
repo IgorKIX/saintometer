@@ -20,7 +20,7 @@ export default function useAddIntention() {
   return useMutation(addIntention, {
     onSuccess: () => {
       // TODO: Better error handling
-      queryClient.refetchQueries('intentions').catch(er => {
+      queryClient.refetchQueries(DATABASE_TABLES_NAMES.INTENTIONS).catch(er => {
         console.error(er);
       });
     },

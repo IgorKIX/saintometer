@@ -30,19 +30,26 @@ function IntentionsListBottomToolbarComponent({
 }: Props) {
   const trigger = useScrollTrigger();
   return (
-    <Slide appear={false} direction="up" in={!trigger}>
-      <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
-        <Toolbar>
-          <IconButton color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
-          <StyledFab color="secondary" aria-label="add">
-            <AddIcon onClick={handleClickOpenDialog} />
-          </StyledFab>
-          <Box sx={{ flexGrow: 1 }} />
-        </Toolbar>
-      </AppBar>
-    </Slide>
+    <>
+      <Toolbar />
+      <Slide appear={false} direction="up" in={!trigger}>
+        <AppBar
+          position="fixed"
+          color="primary"
+          sx={{ top: 'auto', bottom: 0 }}
+        >
+          <Toolbar>
+            <IconButton color="inherit" aria-label="open drawer">
+              <MenuIcon />
+            </IconButton>
+            <StyledFab color="secondary" aria-label="add">
+              <AddIcon onClick={handleClickOpenDialog} />
+            </StyledFab>
+            <Box sx={{ flexGrow: 1 }} />
+          </Toolbar>
+        </AppBar>
+      </Slide>
+    </>
   );
 }
 

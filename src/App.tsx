@@ -19,7 +19,7 @@ function App() {
       errorElement: <NotFound />,
     },
     {
-      path: 'intention-events-list/:intentionId',
+      path: 'intention/:intentionId',
       element: <Intention />,
     },
   ]);

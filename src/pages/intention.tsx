@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 
 import {
   IntentionDataComponent,
+  IntentionEventDialogComponent,
   IntentionHeaderComponent,
 } from '../features/intention';
 import useGetEvents from '../features/intention/hooks/useGetEvents';
 import useGetIntention from '../features/intention/hooks/useGetIntention';
 import { IIntention } from '../features/intentions-list/types';
+import useDialog from '../hooks/useDialog';
 
 export default function Intention() {
   const { intentionId = '' } = useParams();
@@ -15,6 +17,8 @@ export default function Intention() {
     useGetIntention(intentionId);
   const { data: eventList, isSuccess: isSuccessEventList } =
     useGetEvents(intentionId);
+  const { isDialogOpen, handleOpenDialog, handleCloseDialog } =
+    useDialog(false);
   const [intention, setIntention] = useState({} as IIntention);
 
   useEffect(() => {
@@ -28,9 +32,14 @@ export default function Intention() {
       <>
         <IntentionHeaderComponent name={intention.name} />
         <IntentionDataComponent
-          intentionId={intention.id}
           events={eventList}
           score={intention.score}
+          handleOpenDialog={handleOpenDialog}
+        />
+        <IntentionEventDialogComponent
+          intentionId={Number(intentionId) || 0}
+          isDialogOpen={isDialogOpen}
+          handleCloseDialog={handleCloseDialog}
         />
       </>
     );

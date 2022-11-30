@@ -5,15 +5,15 @@ import { IEvent } from '../../intentions-list/types';
 import IntentionEventsListComponent from '../intention-events-list/intention-events-list.component';
 
 type Props = {
-  intentionId?: number;
   score?: number;
   events: IEvent[];
+  handleOpenDialog: () => void;
 };
 
 export default function IntentionDataComponent({
-  intentionId = 0,
   events,
   score = 0,
+  handleOpenDialog,
 }: Props) {
   return (
     <List>
@@ -25,7 +25,10 @@ export default function IntentionDataComponent({
         <ListItemText primary="Events" />
       </ListItem>
       <Collapse in unmountOnExit>
-        <IntentionEventsListComponent events={events} />
+        <IntentionEventsListComponent
+          handleOpenDialog={handleOpenDialog}
+          events={events}
+        />
       </Collapse>
     </List>
   );

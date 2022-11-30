@@ -7,12 +7,11 @@ import {
   IntentionsListComponent,
   IntentionsListDialogComponent,
 } from '../features/intentions-list';
+import useDialog from '../hooks/useDialog';
 
 function IntentionsList() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleClickOpenDialog = () => setIsDialogOpen(true);
-  const handleCloseDialog = () => setIsDialogOpen(false);
+  const { isDialogOpen, handleOpenDialog, handleCloseDialog } =
+    useDialog(false);
 
   return (
     <>
@@ -25,7 +24,7 @@ function IntentionsList() {
         handleCloseDialog={handleCloseDialog}
       />
       <IntentionsListBottomToolbarComponent
-        handleClickOpenDialog={handleClickOpenDialog}
+        handleClickOpenDialog={handleOpenDialog}
       />
     </>
   );

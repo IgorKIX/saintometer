@@ -12,6 +12,7 @@ export interface IIntentionFormInputs {
 
 export interface IEvent {
   id?: number;
+  intention_id?: number;
   name: string;
   score: number;
 }

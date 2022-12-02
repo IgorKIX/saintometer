@@ -6,6 +6,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import useGetIntentions from '../hooks/useGetIntentions';
 
@@ -19,7 +20,7 @@ function IntentionsListComponent() {
       <List>
         {data.map(({ id, name, description }) => (
           <ListItem key={id}>
-            <ListItemButton href={`intention/${id}`}>
+            <ListItemButton component={Link} to={`intention/${id}`}>
               <ListItemText primary={name} secondary={description} />
             </ListItemButton>
           </ListItem>

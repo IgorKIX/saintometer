@@ -1,18 +1,11 @@
-export interface IIntention {
-  id?: number;
-  name: string;
-  description: string | null;
-  score?: number;
-}
+import { Database } from '../../utils/database.types';
+
+export type TIntention = Database['public']['Tables']['intentions']['Row'];
+
+export type TNewIntention =
+  Database['public']['Tables']['intentions']['Insert'];
 
 export interface IIntentionFormInputs {
   name: string;
   description: string;
-}
-
-export interface IEvent {
-  id?: number;
-  intention_id?: number;
-  name: string;
-  score: number;
 }

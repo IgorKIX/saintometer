@@ -7,7 +7,9 @@ const fetchIntention = async (intentionId: string) => {
   const { data, error } = await supabase
     .from(DATABASE_TABLES_NAMES.INTENTIONS)
     .select('name,description,score')
-    .eq('id', intentionId);
+    .eq('id', intentionId)
+    .limit(1)
+    .single();
 
   if (error) {
     throw new Error(error.message);
@@ -17,7 +19,11 @@ const fetchIntention = async (intentionId: string) => {
 };
 
 export default function useGetIntention(intentionId: string) {
-  return useQuery(DATABASE_TABLES_NAMES.INTENTIONS, () =>
-    fetchIntention(intentionId),
+  return useQuery(
+    [DATABASE_TABLES_NAMES.INTENTIONS, intentionId],
+    () => fetchIntention(intentionId),
+    {
+      enabled: Boolean(intentionId),
+    },
   );
 }

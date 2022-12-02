@@ -3,32 +3,37 @@ import StarBorder from '@mui/icons-material/StarBorder';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 
-import { IEvent } from '../../intentions-list/types';
+import useGetEvents from '../hooks/useGetEvents';
 
 type Props = {
-  events: IEvent[];
+  intentionId: string;
   handleOpenDialog: () => void;
 };
 
 export default function IntentionEventsListComponent({
-  events,
+  intentionId,
   handleOpenDialog,
 }: Props) {
-  return (
-    <List component="div" disablePadding>
-      {events.map(event => {
-        return (
-          <ListItem key={event.id}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary={event.name} />
-          </ListItem>
-        );
-      })}
-      <ListItem sx={{ justifyContent: 'center' }}>
-        <AddCircleOutlineIcon onClick={handleOpenDialog} />
-      </ListItem>
-    </List>
-  );
+  const { data: eventsList, isSuccess } = useGetEvents(intentionId);
+
+  if (isSuccess) {
+    return (
+      <List component="div" disablePadding>
+        {eventsList.map(event => {
+          return (
+            <ListItem key={event.id}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary={event.name} />
+            </ListItem>
+          );
+        })}
+        <ListItem sx={{ justifyContent: 'center' }}>
+          <AddCircleOutlineIcon onClick={handleOpenDialog} />
+        </ListItem>
+      </List>
+    );
+  }
+  return <div>Loading Events...</div>;
 }

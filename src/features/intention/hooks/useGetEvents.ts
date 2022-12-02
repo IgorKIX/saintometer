@@ -17,5 +17,11 @@ const fetchEvents = async (intentionId: string) => {
 };
 
 export default function useGetEvents(intentionId: string) {
-  return useQuery(DATABASE_TABLES_NAMES.EVENTS, () => fetchEvents(intentionId));
+  return useQuery(
+    DATABASE_TABLES_NAMES.EVENTS,
+    () => fetchEvents(intentionId),
+    {
+      enabled: Boolean(intentionId),
+    },
+  );
 }

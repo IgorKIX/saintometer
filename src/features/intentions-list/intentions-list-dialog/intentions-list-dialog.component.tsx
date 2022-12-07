@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import useAddIntention from '../hooks/useAddIntention';
+import useAddIntention from '../../../db/hooks/intentions/useAddIntention';
 import { IIntentionFormInputs } from '../types';
 
 type Props = {

@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 
-import { DATABASE_TABLES_NAMES } from '../../../utils/database.types';
-import supabase from '../../../utils/supabase';
+import { DATABASE_TABLES_NAMES } from '../../database.types';
+import supabase from '../../supabase';
 
 const fetchEvents = async (intentionId: string) => {
   const { data, error } = await supabase
@@ -18,7 +18,7 @@ const fetchEvents = async (intentionId: string) => {
 
 export default function useGetEvents(intentionId: string) {
   return useQuery(
-    DATABASE_TABLES_NAMES.EVENTS,
+    [DATABASE_TABLES_NAMES.EVENTS, intentionId],
     () => fetchEvents(intentionId),
     {
       enabled: Boolean(intentionId),

@@ -1,7 +1,7 @@
 import { Collapse, Divider, List, ListItem, ListItemText } from '@mui/material';
 import React from 'react';
 
-import useGetIntention from '../hooks/useGetIntention';
+import useGetIntention from '../../../db/hooks/intentions/useGetIntention';
 import IntentionEventsListComponent from '../intention-events-list/intention-events-list.component';
 
 type Props = {

@@ -14,7 +14,7 @@ import {
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import { useAddEvent } from '../hooks';
+import useAddEvent from '../../../db/hooks/events/useAddEvent';
 import { IEventFormInputs } from '../types';
 
 type Props = {
@@ -40,7 +40,7 @@ function IntentionEventDialogComponent({
     },
   });
   const [scoreValue, setScoreValue] = useState('0');
-  const { mutate } = useAddEvent();
+  const { mutate } = useAddEvent(intentionId.toString());
 
   const formSubmitHandler = (formVal: IEventFormInputs) => {
     mutate({ ...formVal, intention_id: intentionId });

@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 
-import { DATABASE_TABLES_NAMES } from '../../../utils/database.types';
-import supabase from '../../../utils/supabase';
+import { DATABASE_ALL, DATABASE_TABLES_NAMES } from '../../database.types';
+import supabase from '../../supabase';
 
 const fetchIntentions = async () => {
   const { data, error } = await supabase
@@ -16,5 +16,7 @@ const fetchIntentions = async () => {
 };
 
 export default function useGetIntentions() {
-  return useQuery(DATABASE_TABLES_NAMES.INTENTIONS, () => fetchIntentions());
+  return useQuery([DATABASE_TABLES_NAMES.INTENTIONS, DATABASE_ALL], () =>
+    fetchIntentions(),
+  );
 }

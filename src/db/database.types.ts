@@ -75,3 +75,5 @@ export enum DATABASE_TABLES_NAMES {
   INTENTIONS = 'intentions',
   EVENTS = 'events',
 }
+
+export const DATABASE_ALL = 'all';

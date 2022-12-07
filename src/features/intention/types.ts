@@ -1,4 +1,4 @@
-import { Database } from '../../utils/database.types';
+import { Database } from '../../db/database.types';
 
 export interface IEventFormInputs {
   name: string;

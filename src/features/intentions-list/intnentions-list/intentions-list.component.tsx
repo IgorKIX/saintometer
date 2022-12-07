@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import useGetIntentions from '../hooks/useGetIntentions';
+import useGetIntentions from '../../../db/hooks/intentions/useGetIntentions';
 
 function IntentionsListComponent() {
   const { data, isSuccess } = useGetIntentions();

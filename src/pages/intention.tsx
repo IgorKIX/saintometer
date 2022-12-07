@@ -6,7 +6,7 @@ import {
   IntentionEventDialogComponent,
   IntentionHeaderComponent,
 } from '../features/intention';
-import useGetIntention from '../features/intention/hooks/useGetIntention';
+import useGetIntention from '../db/hooks/intentions/useGetIntention';
 import useDialog from '../hooks/useDialog';
 
 export default function Intention() {

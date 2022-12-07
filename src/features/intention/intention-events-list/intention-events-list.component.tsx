@@ -3,7 +3,7 @@ import StarBorder from '@mui/icons-material/StarBorder';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 
-import useGetEvents from '../hooks/useGetEvents';
+import useGetEvents from '../../../db/hooks/events/useGetEvents';
 
 type Props = {
   intentionId: string;
